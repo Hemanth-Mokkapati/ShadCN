@@ -1,4 +1,4 @@
-import AppSidebar from '@/components/AppSideBar';
+import AppSideBar from '@/components/AppSideBar';
 import Navbar from '@/components/NavBar';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { SidebarProvider } from '@/components/ui/sidebar';
@@ -31,11 +31,11 @@ export default async function RootLayout({
   const defaultOpen = cookieStore.get('sidebar_state')?.value === 'true';
 
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <SidebarProvider defaultOpen={defaultOpen}>
-            <AppSidebar />
+            <AppSideBar />
             <main className="w-full">
               <Navbar />
               <div className="px-4">{children}</div>
