@@ -20,9 +20,13 @@ const NavBar = () => {
       {/* left */}
       {/* <PanelRightOpen /> */}
       <SidebarTrigger />
+      <h1 className='text-2xl font-bold'>Dashboard</h1>
 
       {/* right */}
-      <div className="flex align-items gap-4">
+      <div className="flex items-center gap-4">
+
+        
+
         {/* theme */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>

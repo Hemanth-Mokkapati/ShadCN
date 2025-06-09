@@ -44,9 +44,10 @@ const items = [
   },
 ];
 
+
 const AppSideBar = () => {
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className='h-full'>
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
