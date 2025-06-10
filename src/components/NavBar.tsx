@@ -16,11 +16,11 @@ import { SidebarTrigger } from './ui/sidebar';
 const NavBar = () => {
   const { setTheme } = useTheme();
   return (
-    <div className=" flex justify-between items-center p-4">
+    <nav className=" flex justify-between items-center p-4 sticky top-0 z-10 bg-background">
       {/* left */}
       {/* <PanelRightOpen /> */}
       <SidebarTrigger />
-      <h1 className='text-2xl font-bold'>Dashboard</h1>
+      {/* <h1 className='text-2xl font-bold'>Dashboard</h1> */}
 
       {/* right */}
       <div className="flex items-center gap-4">
@@ -80,7 +80,7 @@ const NavBar = () => {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-    </div>
+    </nav>
   );
 };
 

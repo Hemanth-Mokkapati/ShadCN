@@ -1,4 +1,7 @@
 import CardList from '@/components/CardList';
+import EditUser from '@/components/EditUser';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -7,13 +10,11 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb';
-import { BadgeCheck, Candy, Citrus, Shield } from 'lucide-react';
-
-import { Badge } from '@/components/ui/badge';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 import { Progress } from '@/components/ui/progress';
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
-import { Button } from '@/components/ui/button';
+import UserChart from '@/components/UserChart';
+import { BadgeCheck, Candy, Citrus, Shield } from 'lucide-react';
+
 const SingleUserPage = async ({ params }: { params: Promise<{ username: string }> }) => {
   const { username } = await params;
   const Cusername = username[0].toUpperCase() + username.slice(1);
@@ -89,20 +90,7 @@ const SingleUserPage = async ({ params }: { params: Promise<{ username: string }
             <div className="flex items-center justify-between">
               <h1 className="text-lg font-semibold">User Information</h1>
 
-              <Sheet>
-                <SheetTrigger asChild>
-                  <Button variant="outline">Edit User</Button>
-                </SheetTrigger>
-                <SheetContent>
-                  <SheetHeader>
-                    <SheetTitle>Are you absolutely sure?</SheetTitle>
-                    <SheetDescription>
-                      This action cannot be undone. This will permanently delete your account and remove your data from
-                      our servers.
-                    </SheetDescription>
-                  </SheetHeader>
-                </SheetContent>
-              </Sheet>
+              <EditUser />
             </div>
 
             <div className="space-y-4 mt-4">
@@ -111,6 +99,7 @@ const SingleUserPage = async ({ params }: { params: Promise<{ username: string }
                 <Progress value={66} />
               </div>
 
+              {/* user details */}
               <div className="mt-4">
                 <dl className="grid grid-cols-[max-content_1ch_minmax(0,1fr)] gap-x-6 gap-y-2">
                   <dt className="font-medium">Firstname</dt>
@@ -183,10 +172,26 @@ const SingleUserPage = async ({ params }: { params: Promise<{ username: string }
         {/* right */}
         <div className="w-full xl:w-2/3 space-y-6">
           {/* user card container */}
-          <div className="w-full bg-primary-foreground p-4 rounded-lg">UserCard</div>
+          <div className="w-full bg-primary-foreground p-4 rounded-lg">
+            <h1 className="text-lg font-semibold mb-6">User Profile</h1>
+            <div className="flex items-center gap-4 mb-6">
+              <Avatar className="size-12">
+                <AvatarImage src="https://github.com/shadcn.png" alt="user logo" />
+                <AvatarFallback>CN</AvatarFallback>
+              </Avatar>
+
+              <h1 className="text-xl font-semibold">{username.toUpperCase()} MOKKAPATI</h1>
+            </div>
+            <p className="text-sm text-muted-foreground">
+             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa iure nisi officia unde quia porro reiciendis, atque ea neque provident voluptate autem iste, rerum dolores praesentium. Reiciendis alias, quasi ullam distinctio ad, laboriosam eaque quas non ipsum pariatur perferendis minima! Reiciendis illo ipsam, mollitia esse deserunt neque rem, necessitatibus consequuntur libero fuga atque, voluptates incidunt?
+            </p>
+          </div>
+
           {/* chart container */}
-          <div className="w-full bg-primary-foreground p-4 rounded-lg">Chart Container</div>
-          {/* user card container */}
+          <div className="w-full bg-primary-foreground p-4 rounded-lg">
+            <h1 className="text-lg font-medium mb-6">User Activity</h1>
+            <UserChart />
+          </div>
         </div>
       </div>
     </div>
